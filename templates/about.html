@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>About Us</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <nav>
+        <a href="/">Home</a>
+        <a href="/predict">Predict</a>
+        <a href="/about">About</a>
+        <a href="/contact">Contact</a>
+        <a href="/feedback">Feedback</a>
+    </nav>
+    
+    <div class="container">
+        <h1>About Crime Prediction System</h1>
+        <div class="about-content">
+            <h2>Our Mission</h2>
+            <p>We aim to enhance public safety through predictive analytics using machine learning and historical crime data.</p>
+            
+            <h2>Technology Stack</h2>
+            <div class="tech-stack">
+                <div class="tech-item">
+                    <h3>Machine Learning</h3>
+                    <p>Random Forest algorithm trained on historical crime patterns</p>
+                </div>
+                <div class="tech-item">
+                    <h3>Web Framework</h3>
+                    <p>Flask-based web interface for easy access</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

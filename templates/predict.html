@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Crime Prediction</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <style>
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 30px;
+        }
+
+        form {
+            background: #ffffff;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+        }
+
+        select, input {
+            width: 100%;
+            padding: 15px;
+            margin: 10px 0;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+
+        select:focus, input:focus {
+            border-color: #007bff;
+            outline: none;
+            box-shadow: 0 0 8px rgba(0,123,255,0.3);
+        }
+
+        button {
+            width: 100%;
+            padding: 18px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 18px;
+            cursor: pointer;
+            margin-top: 20px;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 40px;
+            color: #333;
+            font-size: 28px;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+            }
+            
+            form {
+                padding: 25px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="/">Home</a>
+        <a href="/predict">Predict</a>
+        <a href="/about">About</a>
+        <a href="/contact">Contact</a>
+        <a href="/feedback">Feedback</a>
+    </nav>
+    
+    <div class="container">
+        <h1>Crime Prediction Form</h1>
+        <form action="/predict" method="POST">
+            <div class="form-group">
+                <select name="city" required>
+                    <option value="">Select City</option>
+                    <option value="Mumbai">Mumbai</option>
+                    <option value="Delhi">Delhi</option>
+                    <option value="Ahmedabad">Ahmedabad</option>
+                    <option value="Chennai">Chennai</option>
+                    <option value="Ludhiana">Ludhiana</option>
+                    <option value="Pune">Pune</option>
+                    <option value="Visakhapatnam">Visakhapatnam</option>
+                    <option value="Surat">Surat</option>
+                    <option value="Bangalore">Bangalore</option>
+                    <option value="Kolkata">Kolkata</option>
+                    <option value="Ghaziabad">Ghaziabad</option>
+                    <option value="Varanasi">Varanasi</option>
+                    <option value="Kanpur">Kanpur</option>
+                    <option value="Patna">Patna</option>
+                    <option value="Bhopal">Bhopal</option>
+                    <option value="Nagpur">Nagpur</option>
+                    <option value="Thane">Thane</option>
+                    <option value="Kalyan">Kalyan</option>
+                    <option value="Agra">Agra</option>
+                    <option value="Meerut">Meerut</option>
+                    <option value="Indore">Indore</option>
+                    <option value="Lucknow">Lucknow</option>
+                    <option value="Jaipur">Jaipur</option>
+                    <option value="Hyderabad">Hyderabad</option>
+                    <option value="Vasai">Vasai</option>
+                    <option value="Rajkot">Rajkot</option>
+                    <option value="Srinagar">Srinagar</option>
+                    <option value="Nashik">Nashik</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <select name="crime_type" required>
+                    <option value="">Select Crime Type</option>
+                    <option value="BURGLARY">Burglary</option>
+                    <option value="ASSAULT">Assault</option>
+                    <option value="IDENTITY THEFT">Identity Theft</option>
+                    <option value="HOMICIDE">Homicide</option>
+                    <option value="KIDNAPPING">Kidnapping</option>
+                    <option value="VANDALISM">Vandalism</option>
+                    <option value="TRAFFIC VIOLATION">Traffic Violation</option>
+                    <option value="VEHICLE-STOLEN">Vehicle Stolen</option>
+                    <option value="COUNTERFEITING">Counterfeiting</option>
+                    <option value="EXTORTION">Extortion</option>
+                    <option value="PUBLIC INTOXICATION">Public Intoxication</option>
+                    <option value="FRAUD">Fraud</option>
+                    <option value="DRUG OFFENSE">Drug Offense</option>
+                    <option value="ARSON">Arson</option>
+                    <option value="SEXUAL ASSAULT">Sexual Assault</option>
+                    <option value="FIREARM OFFENSE">Firearm Offense</option>
+                    <option value="ILLEGAL POSSESSION">Illegal Possession</option>
+                    <option value="CYBERCRIME">Cybercrime</option>
+                    <option value="ROBBERY">Robbery</option>
+                    <option value="DOMESTIC VIOLENCE">Domestic Violence</option>
+                    <option value="SHOPLIFTING">Shoplifting</option>
+                    <option value="FIRE ACCIDENT">Fire Accident</option>
+                    <option value="TRAFFIC FATALITY">Traffic Fatality</option>
+                    <option value="POSSESSION VIOLATIONS">Possession Violations</option>
+                    <option value="POSSESSION OF EXPLOSIVES">Possession of Explosives</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <input type="number" name="year" placeholder="Year" min="2020" max="2025" required>
+            </div>
+
+            <div class="form-group">
+                <input type="number" name="month" placeholder="Month (1-12)" min="1" max="12" required>
+            </div>
+
+            <div class="form-group">
+                <input type="number" name="day" placeholder="Day (1-31)" min="1" max="31" required>
+            </div>
+
+            <div class="form-group">
+                <input type="number" name="hour" placeholder="Hour (0-23)" min="0" max="23" required>
+            </div>
+            
+
+            <button type="submit">Predict Crime Risk</button>
+        </form>
+    </div>
+</body>
+</html>

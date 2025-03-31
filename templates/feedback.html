@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Feedback</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <nav>
+        <a href="/">Home</a>
+        <a href="/predict">Predict</a>
+        <a href="/about">About</a>
+        <a href="/contact">Contact</a>
+        <a href="/feedback">Feedback</a>
+    </nav>
+    
+    <div class="container">
+        <h1>Share Your Feedback</h1>
+        <div class="feedback-form">
+            <form action="/submit-feedback" method="POST">
+                <div class="form-group">
+                    <label>Name:</label>
+                    <input type="text" name="name" required>
+                </div>
+                
+                <div class="form-group">
+                    <label>Email:</label>
+                    <input type="email" name="email" required>
+                </div>
+                
+                <div class="form-group">
+                    <label>Rating:</label>
+                    <select name="rating" required>
+                        <option value="">Select Rating</option>
+                        <option value="5">★★★★★ (Excellent)</option>
+                        <option value="4">★★★★☆ (Good)</option>
+                        <option value="3">★★★☆☆ (Average)</option>
+                        <option value="2">★★☆☆☆ (Poor)</option>
+                        <option value="1">★☆☆☆☆ (Terrible)</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label>Comments:</label>
+                    <textarea name="comments" rows="5" required></textarea>
+                </div>
+                <div class="feedback-form">
+                    {% if success %}
+                    <div class="success-message">
+                        {{ message }}
+                    </div>
+                    {% endif %}
+                    <form action="/submit-feedback" method="POST">
+                        <!-- existing form fields -->
+                    </form>
+                </div>
+                
+                <button type="submit" class="cta-button">Submit Feedback</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
